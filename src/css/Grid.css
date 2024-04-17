@@ -1,0 +1,31 @@
+.main__grid{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  height: 100vh;
+}
+.main__content{
+  background-color: rgb(160, 255, 208);
+}
+@media (max-width:768px) {
+  .main__grid{
+    grid-template-columns: none;
+  }
+}
+.content__page {
+  padding: 25px;
+}
+.content__burger-icon {
+  display: none;
+  width: 30px;
+  position: absolute;
+  padding: 5px;
+}
+.content__burger-icon:hover{
+  filter: invert(1);
+  transition: all 0.4s ease;
+}
+@media (max-width: 768px) {
+  .content__burger-icon {
+    display: block;
+  }
+}
