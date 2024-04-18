@@ -1,0 +1,9 @@
+.icon{
+  height: 1.5rem;
+  width: 1.5rem;
+  display: block;
+  padding: 3px;
+}
+.icon-emoji{
+  font-size: 1.1rem;
+}

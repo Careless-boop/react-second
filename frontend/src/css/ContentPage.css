@@ -1,0 +1,27 @@
+.contentpage{
+  background-color: var(--main-content-color);
+}
+.contentpage__container {
+  padding: 25px;
+}
+.contentpage__burger-icon {
+  display: none;
+  width: 30px;
+  position: absolute;
+  padding: 5px;
+}
+.contentpage__burger-icon:hover{
+  filter: invert(1);
+  transition: all 0.4s ease;
+}
+@media (max-width: 768px) {
+  .contentpage__burger-icon {
+    display: block;
+  }
+}
+.contentpage__header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
