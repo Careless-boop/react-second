@@ -1,5 +1,5 @@
 .contentpage{
-  background-color: var(--main-content-color);
+  background-color: var(--main-background-color);
 }
 .contentpage__container {
   padding: 25px;

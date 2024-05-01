@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../css/ContentPage.css";
 import Icon from "./Icon";
+import axios from "axios";
+import Task from "./Task";
 
 function ContentPage({ taskListData }) {
+  const [tasks, setTasks] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/api/tasks/${taskListData._id}`)
+      .then((response) => setTasks(response.data))
+      .catch((error) => console.error(error));
+  }, [taskListData._id]);
+
+  if (!tasks) {
+    return null;
+  }
   return (
     <div className="contentpage">
       <img
@@ -21,18 +35,8 @@ function ContentPage({ taskListData }) {
         </div>
         <div className="contentpage__tasks">
           <ul className="tasks">
-            {taskListData.tasks.map((task, index) => (
-              <li key={index} className="task">
-                <div className="task__container">
-                  <h4 className="task__name">{task.name}</h4>
-                  <h5 className="task__parent-list">{taskListData.name}</h5>
-                  <p className="task__date">
-                    {task.date.day}.{task.date.month}.{task.date.year}{" "}
-                    {task.date.hour}:{task.date.minute}
-                  </p>
-                  <button className="task__important-mark"></button>
-                </div>
-              </li>
+            {tasks.map((taskData,index) => (
+              <Task key={taskData._id} taskData={taskData} />
             ))}
           </ul>
         </div>

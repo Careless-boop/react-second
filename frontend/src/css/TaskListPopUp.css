@@ -1,0 +1,43 @@
+.tasklist-popup, .tasklist-popup--closed {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: display 1s ease;
+}
+.tasklist-popup__container {
+  background: var(--popup-color);
+  border-radius: 0.5rem;
+  padding: 30px;
+  box-shadow: 0px 0px 10px 4px rgba(0,0,0,0.3);
+}
+.tasklist-popup__title{
+  text-align: center;
+}
+.tasklist-popup__form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form__item,
+.form__item-inline{
+  margin: 8px;
+  display: flex;
+  gap: 7px;
+}
+.form__item{
+  flex-direction: column;
+}
+.form__item-inline{
+  flex-direction: row;
+  align-items: center;
+}
+.icon-wrapper{
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
