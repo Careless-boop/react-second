@@ -8,6 +8,7 @@ const taskListSchema = new mongoose.Schema(
     },
     name: String,
     isRemovable: Boolean,
+    color: String,
   }
 );
 

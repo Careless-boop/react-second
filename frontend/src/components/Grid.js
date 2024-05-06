@@ -15,16 +15,35 @@ function Grid() {
         const taskListsWithId = response.data;
 
         setTaskLists(taskListsWithId);
-  
+
         if (taskListsWithId.length > 0) {
           setActiveTaskList(taskListsWithId[0]);
         }
       })
       .catch((error) => console.error(error));
-  },[]);
+  }, []);
 
-  function changeActiveTaskList(taskList){
+  function changeActiveTaskList(taskList) {
     setActiveTaskList(taskList);
+  }
+
+  function updateTaskListsAfterChanging(changedTaskList) {
+    const updatedTaskLists = taskLists.map((taskList) => {
+      if (taskList._id === changedTaskList._id) {
+        return { ...taskList, color: changedTaskList.color };
+      } else {
+        return taskList;
+      }
+    });
+    setTaskLists(updatedTaskLists);
+  }
+
+  function updateTaskListsAfterDeletion(deletedTaskListId) {
+    const updatedTaskLists = taskLists.filter(
+      (taskList) => taskList._id !== deletedTaskListId
+    );
+    setTaskLists(updatedTaskLists);
+    setActiveTaskList(taskLists[0]);
   }
 
   if (!activeTaskList) {
@@ -39,7 +58,13 @@ function Grid() {
         activeTaskList={activeTaskList}
         setActiveTaskList={changeActiveTaskList}
       />
-      <ContentPage taskListData={activeTaskList}/>
+      <ContentPage
+        taskListData={activeTaskList}
+        updateTaskListsData={[
+          updateTaskListsAfterDeletion,
+          updateTaskListsAfterChanging,
+        ]}
+      />
     </div>
   );
 }

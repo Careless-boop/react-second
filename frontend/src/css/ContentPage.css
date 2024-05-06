@@ -1,5 +1,9 @@
 .contentpage{
   background-color: var(--main-background-color);
+  box-shadow: inset 1px 0px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .contentpage__container {
   padding: 25px;
@@ -24,4 +28,38 @@
   flex-direction: row;
   align-items: center;
   gap: 8px;
+}
+.picker-test{
+  width: 50px;
+  height: 50px;
+  content: "";
+}
+.contentpage__more-button{
+  border-radius: 5px;
+  font-size: 1.5rem;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  transition: all 0.3s ease;
+}
+.contentpage__more-button:hover{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.more-button__menu{
+  background-color: var(--additional-background-color);
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.3);
+  padding: 1px;
+}
+.more-button__menu-item{
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0);
+  margin: 3px;
+  padding: 2px;
+  transition: all 0.3s ease;
+}
+.more-button__menu-item:hover{
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.contentpage__task-creator{
+  
 }

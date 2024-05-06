@@ -9,7 +9,7 @@
 }
 :root {
   --text-color: rgb(20, 20, 20);
-  --main-background-color: rgb(196, 238, 221);
+  --main-background-color: #c4eedd;
   --additional-background-color: rgb(223, 223, 223);
   --popup-color: rgb(240, 240, 240);
   scroll-behavior: smooth;

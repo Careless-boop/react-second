@@ -53,6 +53,39 @@ app.post("/api/taskLists", async (req, res) => {
   }
 });
 
+app.post("/api/taskLists/:taskListId/color", async (req, res) => {
+  const { taskListId } = req.params;
+  const { color } = req.body;
+
+  try {
+    const updatedTaskList = await TaskList.findByIdAndUpdate(
+      taskListId,
+      { color },
+      { new: true }
+    );
+
+    if (!updatedTaskList) {
+      return res.status(404).json({ error: "Task list not found" });
+    }
+
+    res.status(200).json(updatedTaskList);
+  } catch (error) {
+    console.error("Error updating task list color:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+app.delete("/api/taskLists/:taskListId", async (req, res) => {
+  try {
+    const taskListId = req.params.taskListId;
+    await TaskList.findByIdAndDelete(taskListId);
+    res.status(204).send();
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server Error" });
+  }
+});
+
 const Task = require("./models/Task");
 
 app.get("/api/tasks/:taskListId", async (req, res) => {

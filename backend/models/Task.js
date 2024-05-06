@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const taskSchema = new mongoose.Schema({
-  _id: mongoose.Types.ObjectId,
   name: String,
   date: {
     year: Number,
