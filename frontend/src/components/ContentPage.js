@@ -18,12 +18,12 @@ function ContentPage({ taskListData, updateTaskListsData }) {
       .get(`http://localhost:5000/api/tasks/${taskListData._id}`)
       .then((response) => {
         setTasks(response.data);
-        setCurrentTaskListData(prevData => ({ ...prevData, color: taskListData.color }));
+        setCurrentTaskListData(taskListData);
         setColor(taskListData.color);
       })
       .catch((error) => console.error(error));
-  }, [taskListData._id]);
-  
+  }, [taskListData]);
+
   useEffect(() => {
     if (!isMoreMenuOpen) {
       setIsColorPickerOpen(false);
@@ -75,6 +75,7 @@ function ContentPage({ taskListData, updateTaskListsData }) {
   }
   return (
     <div
+      key={taskListData._id}
       className="contentpage"
       style={{ backgroundColor: currentTaskListData.color }}
     >
